@@ -7,6 +7,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: 
+          name: node-env
     steps:
       - uses: actions/checkout@v2
 
@@ -15,8 +17,7 @@ jobs:
       - name: Send mail
         if: always()
         uses: dawidd6/action-send-mail@v2
-        environment: 
-          name: node-env
+        
         with:
           # mail server settings
           server_address: smtp.gmail.com
@@ -25,9 +26,9 @@ jobs:
           username: ${{ secrets.username}}
           password:  ${{ secrets.password }}
           # email subject
-          subject: ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
+          subject: job of has 
           # email body as text
-          body: ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
+          body: gibberish
           # comma-separated string, send email to
           to: himanshu162pnt@gmail.com
           # from email name
